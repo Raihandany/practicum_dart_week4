@@ -1,21 +1,40 @@
-void main (){
-  //langkah 1
-  var record = ('first', 2, 3, 'last');
+void main() {
+  // Langkah 1
+  var record = {
+    'first': 'first',
+    'a': 2,
+    'b': true,
+    'last': 'last',
+  };
   print(record);
-
-  // Langkah 2
   var swappedRecord = tukar(record);
   print(swappedRecord);
+
+  var mahasiswa = {
+    'nama': 'Raihan Dany Radhinnur',
+    'NIM': 2141720166,
+  };
+  print(mahasiswa);
+
+  var mahasiswa2 = {
+    'nama': mahasiswa['nama'], // Menggunakan kunci 'nama'
+    'a': 2,
+    'b': true,
+    'NIM': mahasiswa['NIM'], // Menggunakan kunci 'NIM'
+  };
+
+  print(mahasiswa2['nama']); // Prints Satria Pangestu A
+  print(mahasiswa2['a']); // Prints 2
+  print(mahasiswa2['b']); // Prints true
+  print(mahasiswa2['NIM']); // Prints 2141720161
+
+  print(mahasiswa2);
 }
 
-//langkah 3
-List<dynamic> tukar(List<dynamic> record) {
-  if (record.length == 2 && record [0] is int && record[1] is int){
-    var a = record[0];
-    var b = record[1];
-    return [b,a];
-
-  }else{
-    throw ArgumentError('Input must be integer');
-  }
+Map<String, dynamic> tukar(Map<String, dynamic> record) {
+  var a = record['a'];
+  var b = record['b'];
+  record['a'] = b;
+  record['b'] = a;
+  return record;
 }
